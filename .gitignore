@@ -1,0 +1,11 @@
+*.pdf
+*.synctex.gz
+*.synctex(busy)
+*_temp.tex
+*.aux
+*.log
+*.toc
+*.xdv
+*.out
+.DS_Store
+.idea/
