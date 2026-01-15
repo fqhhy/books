@@ -1,0 +1,5 @@
+- ubuntu 20 - texlive2019
+sudo apt-get install --yes --no-install-recommends texlive-latex-base texlive texlive-xetex texlive-lang-chinese texlive-lang-cjk texlive-plain-generic
+
+- ubuntu 18 - texlive2016
+sudo apt-get install --yes --no-install-recommends tex-common texlive-latex-base texlive-fonts-recommended texlive texlive-xetex texlive-lang-chinese texlive-lang-cjk texlive-generic-recommended

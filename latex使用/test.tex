@@ -1,0 +1,44 @@
+\documentclass[11pt,oneside]{book}
+\usepackage[letterpaper]{geometry}
+
+% \usepackage{setspace}
+
+% \renewcommand{\footnotesize}{\small} % 10pt footnotes in 11pt doc instead of 9pt
+
+\usepackage[hang, flushmargin,splitrule,multiple,perpage]{footmisc}
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\@makefntext}
+{\ifFN@hangfoot\bgroup}
+{\ifFN@hangfoot\bgroup\def\@makefnmark{\normalfont\@thefnmark}}
+{}{}
+
+
+\patchcmd{\@makefntext}
+    {\ifdim\footnotemargin>\z@\hb@xt@ \footnotemargin{\hss\@makefnmark}}
+    {\ifdim\footnotemargin>\z@\hb@xt@ \footnotemargin{\@makefnmark\hss}}
+    {}{}
+\makeatother
+
+\setlength{\footnotemargin}{1.25em} % 整个脚注文本的左边距，加此边距，来显示脚注序号。
+% \setlength{\skip\footins}{1\baselineskip} % 脚注线 和 脚注内容 间距 
+% \setlength{\footnotesep}{\skip\footins} % 两个脚注文本之间的间距
+
+% \renewcommand{\hangfootparskip}{0pt}  
+% \renewcommand{\hangfootparindent}{2em}
+
+\parskip=0pt
+
+\usepackage{lipsum}
+
+\begin{document}
+
+Lorem ipsum...\footnote{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+
+Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. }
+
+Lorem ipsum...\footnote{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+
+Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. }
+\end{document} 

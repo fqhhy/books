@@ -1,0 +1,16 @@
+
+
+% 适用于 正文字体 12pt，行间距 12pt
+% \setlength{\tabcolsep}{0em} 使表格内容紧凑
+% \vspace{4pt}  是为了调整 {tabular}上方 与正文直接的垂直间距，如果改了正文行间距，这里也要改
+% 最后的 \\[2pt] 也是调整 {tabular}下方 与正文之间的垂直间距
+
+% \raggedleft 是使文本靠右对齐，加上后面的 \hspace{4em} 设置右边距
+% \makebox[12em][s] 指定 box 的宽度，分散对齐
+% \multirow{2} 是占了两行，与前面的称谓相匹配
+
+\setlength{\tabcolsep}{0em}
+{\vspace{4pt}\raggedleft\begin{tabular} {cc}%
+    \makebox[12em][s]{中华人民共和国} & \multirow{2}*{\quad{}毛泽东} \\ 
+    \makebox[12em][s]{中国共产党中央委员会主席} & \\ 
+\end{tabular} \hspace{4em} \\[2pt]}

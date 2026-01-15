@@ -1,0 +1,27 @@
+\documentclass{ctexart}
+
+\newenvironment{duihua}{
+	\begin{list}{}{
+        \setlength{\topsep}{0pt}        % 列表与正文的垂直距离
+        \setlength{\partopsep}{0pt}     % 
+        \setlength{\parsep}{\parskip}   % 一个 item 内有多段，段落间距
+        \setlength{\itemsep}{\lineskip}       % 两个 item 之间，减去 \parsep 的距离
+        \setlength{\labelsep}{0pt}%
+        \setlength{\labelwidth}{3em}%
+        \setlength{\itemindent}{0pt}%
+        \setlength\listparindent{\parindent}
+        \setlength{\leftmargin}{3em}
+        \setlength{\rightmargin}{0pt}
+        }
+}{\end{list}}
+
+% \newenvironment{<环境名称>}{<开始部分定义>}{<结束部分定义>}
+
+\begin{document}
+
+\begin{duihua}
+\item[\textbf{人名：}] This abstract explain the approach userd to solve the problems at hand.
+\end{duihua}
+
+Some text following the abstract. Some text following the abstract. Some text following the abstract.
+\end{document}

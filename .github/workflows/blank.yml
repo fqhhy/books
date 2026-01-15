@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: 安装tex-live
-        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends texlive-xetex texlive-lang-chinese texlive-lang-cjk texlive-plain-generic texlive-fonts-recommended fonts-noto-cjk-extra
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends texlive-xetex texlive-lang-chinese texlive-lang-cjk texlive-plain-generic texlive-fonts-recommended texlive-fonts-extra 
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script

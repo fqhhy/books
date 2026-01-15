@@ -1,0 +1,103 @@
+% 对齐环境：
+%\begin{center} … \end{center}
+%\begin{flushleft} … \end{flushleft}
+%\begin{flushright} … \end{flushright}
+% 对齐命令
+% \raggedright \centering  \raggedleft
+% 想使用这三个命令，只对齐一段文本，不对后续文本生效，可以如下
+% {\raggedleft second line to be right aligned.\par} 在结尾使用 \par
+
+% 环境会在上下文产生一个额外间距，而 \centering 等命令不产生。
+% 一行的文本对齐方式  环境 \leftline{左对齐} \centerline{居中} \rightline{右对齐}
+
+\documentclass{ctexart}
+
+% 计算文字宽度(\widthof命令)
+\usepackage{calc}
+\usepackage{multirow}
+% 使用\foreach命令
+\usepackage{tikz}
+
+% 记录字符串长度的变量
+
+
+\newcommand\college{学院}
+\newcommand\majorID{专业班级}
+\newcommand\thesisauthor{学生姓名}
+\newcommand\adviser{指导教师}
+\newcommand\coadviser{协助指导教师}
+\newcommand\applydate{完成日期}
+\newlength{\lablen}
+
+\newcommand\test[5]{{
+  % \setlength{\lablen}{\maxof{\widthof{#1}}{\lablen}}
+  % \setlength{\lablen}{\maxof{\widthof{#2}}{\lablen}}
+  % \setlength{\lablen}{\maxof{\widthof{#3}}{\lablen}}
+  % \setlength{\lablen}{\maxof{\widthof{#4}}{\lablen}}
+  % \setlength{\lablen}{\maxof{\widthof{#5}}{\lablen}}
+  % \mbox{\the\lablen}
+
+  % \makebox[#1em][s]{测试}\\
+  % \makebox[#1em][s]{#3}\\
+  \makebox[#1em][s]{#3\\#4}\hspace{1em}\mbox{\raise#2\baselineskip\hbox{毛泽东}}\\
+}}
+
+\begin{document} %在document环境中撰写文档
+
+\test{13}{1}{中华人民共和国}{中国共产党中央委员会主席}{}{毛泽东}
+\test{13}{1}{测试测试}{中国共产党中央委员会副主席}{}{周恩来}
+
+\mbox{\raise2.25pt\hbox{正文}} \Large{测试}
+
+
+
+% 找到最长的字符串(用\settowidth命令实现)
+% \settowidth{\lablen}{\coadviser} % 不需要calc宏包
+% 用\makebox生成分散对齐的定宽盒子
+% \begin{tabular} {cc}%
+%   \makebox[\the\lablen][s]{\college} ：     & \makebox[\the\lablen][s]{} \\ \cline{2-2}%
+%   \makebox[\the\lablen][s]{\majorID} ：     & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\thesisauthor} ：& \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\adviser} ：     & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\coadviser} ：   & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\applydate} ：   & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+% \end{tabular}
+
+% \vspace{4ex}
+
+% 找到最长的字符串(用\widthof命令实现)
+% \setlength{\lablen}{\widthof{\coadviser}} % 需要calc宏包
+% 用\makebox生成分散对齐的定宽盒子
+% \begin{tabular} {cc}%
+%   \makebox[\the\lablen][s]{\college} ：     & \makebox[\the\lablen][s]{} \\ \cline{2-2}%
+%   \makebox[\the\lablen][s]{\majorID} ：     & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\thesisauthor} ：& \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\adviser} ：     & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\coadviser} ：   & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\applydate} ：   & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+% \end{tabular}
+
+% \vspace{4ex}
+
+% 找到最长的字符串(用循环实现，需要TikZ宏包)
+% \foreach \x in {\college, \majorID, \thesisauthor, \adviser, \coadviser, \applydate}
+% {
+%   \settowidth{\textlen}{\x}
+%   \ifdim \textlen > \lablen
+%     \setlength{\lablen}{\textlen}
+%   \else
+%     \relax
+%   \fi
+% }
+% 用\makebox生成分散对齐的定宽盒子
+% \begin{tabular} {cc}%
+%   \makebox[\the\lablen][s]{\college} ：     & \makebox[\the\lablen][s]{} \\ \cline{2-2}%
+%   \makebox[\the\lablen][s]{\majorID} ：     & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\thesisauthor} ：& \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\adviser} ：     & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\coadviser} ：   & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+%   \makebox[\the\lablen][s]{\applydate} ：   & \makebox[\the\lablen][s]{} \\ \cline{2-2}
+% \end{tabular}
+  
+
+\end{document}

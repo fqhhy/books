@@ -1,0 +1,28 @@
+# 删除 texlive 
+
+sudo apt-get purge texlive* tex-common*
+sudo apt-get purge texlive* 
+sudo rm -rf /usr/local/texlive/*
+sudo rm -rf /usr/local/share/texmf
+sudo rm -rf /var/lib/texmf
+sudo rm -rf /etc/texmf
+rm -rf ~/.texlive
+
+
+sudo rm -rf /usr/local/share/miktex-texmf
+rm -rf ~/.miktex
+
+find /usr/local/ -maxdepth 3 | grep latex | xargs -r rm
+find /usr/bin/ -maxdepth 2 | grep miktex- | xargs -r rm
+find /usr/bin/ -maxdepth 2 | grep latex |xargs -r rm
+find /usr/lib/ -maxdepth 2 | grep libmiktex- | xargs -r rm
+find /usr/ -maxdepth 3 | grep miktex | xargs -r rm
+
+
+### 安装 
+apt-get install --yes --no-install-recommends texlive-xetex texlive-lang-chinese texlive-lang-cjk texlive-plain-generic texlive-fonts-recommended
+
+会安装以下：
+#  fonts-arphic-bkai00mp fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp fonts-arphic-gkai00mp fonts-lmodern libapache-pom-java libcommons-logging-java libcommons-parent-java libfontbox-java libharfbuzz-icu0 libkpathsea6 libpdfbox-java libptexenc1 libsynctex2 libteckit0 libtexlua53 libtexluajit2 libzzip-0-13 poppler-data preview-latex-style t1utils teckit 
+  
+texlive-base texlive-binaries texlive-fonts-recommended texlive-lang-chinese texlive-lang-cjk  texlive-latex-base texlive-latex-extra texlive-latex-recommended  texlive-pictures texlive-plain-generic texlive-xetex tipa

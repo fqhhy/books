@@ -1,0 +1,45 @@
+\documentclass[a5paper,oneside,12pt]{ctexbook}
+% https://texblog.org/2019/06/03/control-the-width-of-table-columns-tabular-in-latex/ 
+
+% 指定表格宽度，内容对齐方式
+% p{width}	Top-aligned cells width fixed width
+% m{width}	Middle-aligned cells width fixed width
+% b{width}	Bottom-aligned cells with fixed width
+
+% https://tex.stackexchange.com/questions/28392/how-to-suppress-caption-numbering-in-a-table#
+% 表格的标题不自动加序号 需使用 \usepackage{caption}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{array}
+
+\begin{document}
+
+\subsection{使用{\textbackslash}begin{\{table\}}}
+Table前面的正文。
+
+\begin{table}[H] % [H] 需要\usepackage{float}
+% \begin{table} 环境，与上文的垂直距离，暂时没找到设置的地方，想要减小这个距离，直接用 \vspace{-2ex}
+\setlength{\abovecaptionskip}{0em} % 标题与表格内容的距离
+% \setlength{\belowcaptionskip}{0em} % 标题与表格内容的距离
+\captionsetup{labelformat=empty,justification=raggedright,singlelinecheck=false,indention=2em} % 需要 \usepackage{caption}
+% labelformat=empty 不显示表格标题前缀及编号
+% justification=raggedright, 表格标题 靠左对齐
+\caption{〔入格八字〕金状元}
+\setlength{\tabcolsep}{0em} % 表格中，内容水平方向padding
+\begin{tabular}{|m{5em}<{\raggedleft}|m{2.5em}<{\raggedleft}|c|c|} % 
+\hline
+（年）&&乙卯&\\
+（月）&&丁亥&\scriptsize{正官}\\
+（日）&&丁未&\\
+（时）&\scriptsize{正财}&庚戌&\\
+\hline
+\end{tabular}
+\end{table}
+Table后面的正文。
+
+% 表格每行的间距 
+% \renewcommand\arraystretch{0.5}
+
+\subsection{仅使用{\textbackslash}begin{\{tabular\}}}
+
+\end{document}

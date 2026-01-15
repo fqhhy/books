@@ -1,0 +1,52 @@
+\documentclass[12pt]{book} % 确定normalsize大小，为可选参数，在中括号内，此为10磅，只有10，11，12磅三个选项，ctex 类，可在 \begin{document} 后面使用 \zihao{4} 设置全局正文字号
+\usepackage{xeCJK}
+\usepackage[a5paper, margin=1in, landscape]{geometry}
+
+% \usepackage[sf, big, bf]{titlesec}
+% \setmainfont[Numbers=OldStyle, BoldFont=Minion Pro Semibold]{Minion Pro}
+% \setsansfont[Numbers=OldStyle, BoldFont=Myriad Pro Semibold]{Myriad Pro}
+% \setCJKmainfont[RawFeature={vertical:+vert}]
+% \setCJKsansfont{RawFeature={vertical:+vert}}
+
+\defaultCJKfontfeatures{RawFeature={vertical:+vert:+vhal}}
+% \defaultCJKfontfeatures{RawFeature={vertical:+vert}} % :+vhal
+
+% \renewcommand{\thepage}{\Chinese{page}}
+% \renewcommand{\thesection}{\Chinese{section}}
+
+% 把汉字抬高，解决英文字符错位的问题。baseline
+\newcommand*\CJKmovesymbol[1]{\raise.25em\hbox{#1}}
+
+\newcommand*\CJKmove{\punctstyle{plain}
+  \let\CJKsymbol\CJKmovesymbol
+  \let\CJKpunctsymbol\CJKsymbol} 
+\AtBeginDocument{\Large \CJKmove \sloppy}
+
+\usepackage{gezhu}
+	\setgezhulines{2} 
+	\everygezhu{\fontsize{7}{8}\selectfont}
+	\setgezhuraise{-1.5pt}
+
+\usepackage{atbegshi}
+\AtBeginShipout{
+   \global\setbox\AtBeginShipoutBox\vbox{
+     \special{pdf: put @thispage <</Rotate 90>>}
+     \box\AtBeginShipoutBox
+   }
+}
+
+\usepackage{zhnumber}
+\renewcommand{\thesection}{\zhnum{section}}
+
+\begin{document}
+% \zihao{4}
+
+\section{随便 sample}%瞎打
+\begin{withgezhu}
+我阿斯顿发送，到发啊㗊\,\gezhu{为哈四度空间发了可是绝大部分拉开基本福利。卡{将女生的福利卡}就收到你发了卡就嗯福，利卡今年的说法。}\,阿森纳的（六块腹肌)啊死了都快放假，呢啊晌地方啊师傅撒开鹃大结局啊就，没看见我那句\,\gezhu{09876 a piece of English test}\,嗯好看还是要去电影院看哈是不是。
+\end{withgezhu}
+
+\section{字号大小}
+看看字号大小。
+
+\end{document}

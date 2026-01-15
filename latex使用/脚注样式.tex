@@ -1,0 +1,39 @@
+\documentclass{ctexart}
+% \usepackage[symbol=$\wedge$,numberlinked=false]{footnotebackref}
+\usepackage[numberlinked]{footnotebackref}
+
+\usepackage{etoolbox}
+% 补丁
+\makeatletter
+% 补丁，改脚注文本前面的序号的字体，去掉其上标样式 
+\patchcmd{\@makefntext}
+    {\textsuperscript}
+    {}{}{}
+
+% \patchcmd{\@makefntext}
+%     {\@makefnmark}
+%     {\hbox{\normalfont\@thefnmark}}
+%     {}{}
+
+%% 不用 etoolbox 的另一种打临时热补丁的写法
+%\let\save@makefntext\@makefntext
+%\long\def\@makefntext#1{{%
+%  \let\@makefnmark\nosuper@makefnmark
+%  \save@makefntext{#1}}}
+\makeatother
+\renewcommand\thefootnote{{\hspace{-0.55em}〔\arabic{footnote}〕\hspace{-0.68em}}} 
+
+% XeTeX 或 LuaTeX 下带圈数字 \thefootnote 的一种定义
+\usepackage{xunicode-addon}
+% \newfontfamily\fnmarkfont{ipam.ttf}
+% \renewcommand\thefootnote{{\fnmarkfont\textcircled{\arabic{footnote}}}}
+
+\begin{document}
+
+正文\footnote{脚注}
+
+Some text with a footnote\footnote{The first footnote.}\\
+
+Text with the second footnote\footnote[4]{The second footnote.}
+
+\end{document}
